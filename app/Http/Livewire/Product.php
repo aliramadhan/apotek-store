@@ -37,13 +37,23 @@ class Product extends Component
             'price' => 'required',
             'description' => 'required',
         ]);
-    
-        Student::updateOrCreate(['id' => $this->product->id], [
-            'name' => $this->name,
-            'email' => $this->email,
-            'mobile' => $this->mobile,
-        ]);
-        session()->flash('message', $this->product->id ? 'Student updated.' : 'Student created.');
+    	if ($this->product != null) {
+	        ModelProduct::updateOrCreate(['id' => $this->product->id], [
+	            'name' => $this->name,
+	            'price' => $this->price,
+	            'description' => $this->description,
+	        ]);
+        	session()->flash('message', 'Product updated.');
+    	}
+    	else{
+	        ModelProduct::Create([
+	            'name' => $this->name,
+	            'price' => $this->price,
+	            'image' => '',
+	            'description' => $this->description,
+	        ]);
+        	session()->flash('message', 'Product created.');
+    	}
         $this->closeModalPopover();
         $this->resetCreateForm();
     }
@@ -56,7 +66,7 @@ class Product extends Component
         $this->openModalPopover();
     }
     public function delete($id){
-        Student::find($id)->delete();
-        session()->flash('message', 'Studen deleted.');
+        ModelProduct::find($id)->delete();
+        session()->flash('message', 'Product deleted.');
     }
 }
