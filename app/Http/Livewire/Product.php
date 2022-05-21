@@ -47,4 +47,16 @@ class Product extends Component
         $this->closeModalPopover();
         $this->resetCreateForm();
     }
+    public function edit($id){
+        $this->product = $product = ModelProduct::findOrFail($id);
+        $this->name = $product->name;
+        $this->price = $product->price;
+        $this->description = $product->description;
+    
+        $this->openModalPopover();
+    }
+    public function delete($id){
+        Student::find($id)->delete();
+        session()->flash('message', 'Studen deleted.');
+    }
 }

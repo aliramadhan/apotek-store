@@ -17,7 +17,7 @@
 	                Create Student
 	            </button>
 	            @if($isModalOpen)
-	            @include('livewire.create')
+	            @include('livewire.Product.create')
 	            @endif
 	            <table class="table-fixed w-full">
 	                <thead>
