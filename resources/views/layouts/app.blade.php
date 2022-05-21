@@ -42,5 +42,40 @@
         @stack('modals')
 
         @livewireScripts
+        <!-- script for livewire alert -->
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+        <x-livewire-alert::scripts />
+        <script type="text/javascript">
+          @if(Session::has('success'))
+          Swal.fire({
+            titleText: "{{ session('success') }}",
+            icon: 'success',
+            position: 'center', 
+            timer: 3000,
+            toast: false,
+            showConfirmButton: false,
+          });
+          @endif
+          @if(Session::has('failure'))
+          Swal.fire({
+            titleText: "{{ session('failure') }}",
+            icon: 'error',
+            position: 'center', 
+            timer: 3000,
+            toast: false,
+            showConfirmButton: false,
+          });
+          @endif
+          @if($errors->any())
+          Swal.fire({
+            titleText: "{{ implode('', $errors->all(':message')) }}",
+            icon: 'error',
+            position: 'center', 
+            timer: 3000,
+            toast: false,
+            showConfirmButton: false,
+          });
+          @endif
+        </script>
     </body>
 </html>

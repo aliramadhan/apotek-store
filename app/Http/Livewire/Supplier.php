@@ -3,18 +3,18 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Models\Product as ModelProduct;
+use App\Models\ListSupplier;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class Product extends Component
+class Supplier extends Component
 {
     use LivewireAlert;
-    public $products, $setProduct, $price, $image, $description, $name;
+	public $suppliers, $setSupplier, $name, $cp, $phone, $address;
     public $isModalOpen = 0;
-
+    
     public function render(){
-        $this->products = ModelProduct::all();
-        return view('livewire.Product.product');
+        $this->suppliers = ListSupplier::all();
+        return view('livewire.Supplier.supplier');
     }
     public function create(){
         $this->resetCreateForm();
@@ -27,25 +27,27 @@ class Product extends Component
         $this->isModalOpen = false;
     }
     private function resetCreateForm(){
-        $this->setProduct = '';
+        $this->setSupplier = '';
         $this->name = '';
-        $this->price = '';
-        $this->image = '';
-        $this->description = '';
+        $this->cp = '';
+        $this->phone = '';
+        $this->address = '';
     }
     public function store(){
         $this->validate([
             'name' => 'required',
-            'price' => 'required',
-            'description' => 'required',
+            'cp' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
         ]);
-    	if ($this->setProduct != null) {
-	        ModelProduct::updateOrCreate(['id' => $this->setProduct->id], [
+    	if ($this->setSupplier != null) {
+	        ListSupplier::updateOrCreate(['id' => $this->setSupplier->id], [
 	            'name' => $this->name,
-	            'price' => $this->price,
-	            'description' => $this->description,
+	            'contact_person' => $this->cp,
+	            'number_phone' => $this->phone,
+	            'address' => $this->address,
 	        ]);
-            $this->alert('success', 'Product updated.', [
+            $this->alert('success', 'Supplier updated.', [
                 'position' =>  'center', 
                 'timer' =>  3000,
                 'toast' =>  false, 
@@ -53,13 +55,13 @@ class Product extends Component
             ]);
     	}
     	else{
-	        ModelProduct::Create([
+	        ListSupplier::Create([
 	            'name' => $this->name,
-	            'price' => $this->price,
-	            'image' => '',
-	            'description' => $this->description,
+	            'contact_person' => $this->cp,
+	            'number_phone' => $this->phone,
+	            'address' => $this->address,
 	        ]);
-            $this->alert('success', 'Product created.', [
+            $this->alert('success', 'Supplier added.', [
                 'position' =>  'center', 
                 'timer' =>  3000,
                 'toast' =>  false, 
@@ -70,16 +72,17 @@ class Product extends Component
         $this->resetCreateForm();
     }
     public function edit($id){
-        $this->setProduct = $product = ModelProduct::findOrFail($id);
-        $this->name = $product->name;
-        $this->price = $product->price;
-        $this->description = $product->description;
-    
+        $this->setSupplier = $supplier = ListSupplier::findOrFail($id);
+        $this->name = $supplier->name;
+        $this->cp = $supplier->contact_person;
+        $this->phone = $supplier->number_phone;
+        $this->address = $supplier->address;
+
         $this->openModalPopover();
     }
     public function delete($id){
-        ModelProduct::find($id)->delete();
-        $this->alert('success', 'Product deleted.', [
+        ListSupplier::find($id)->delete();
+        $this->alert('success', 'Supplier deleted.', [
             'position' =>  'center', 
             'timer' =>  3000,
             'toast' =>  false, 

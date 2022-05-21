@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Product;
+use App\Http\Livewire\Supplier;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,5 +29,8 @@ Route::middleware([
     })->name('dashboard');
 
     //route products
-	Route::get('products', Product::class);
+	Route::get('products', Product::class)->name('products');
+
+    //route supplier
+	Route::get('suppliers', Supplier::class)->name('suppliers');
 });

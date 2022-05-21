@@ -13,24 +13,32 @@
                                 class="block text-gray-700 text-sm font-bold mb-2">Name:</label>
                             <input type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="nameFormInput" placeholder="Ex. Paracetamol" wire:model="name">
+                                id="nameFormInput" placeholder="Exp. PT Kimia Medika" wire:model="name">
                             @error('name') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>
                         <div class="mb-4">
-                            <label for="priceFormInput"
-                                class="block text-gray-700 text-sm font-bold mb-2">Price:</label>
-                            <input type="number"
-                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="priceFormInput" placeholder="Ex. 50000" wire:model="price">
-                            @error('price') <span class="text-red-500">{{ $message }}</span>@enderror
-                        </div>
-                        <div class="mb-4">
-                            <label for="descriptionFormInput"
-                                class="block text-gray-700 text-sm font-bold mb-2">Description:</label>
+                            <label for="cpFormInput"
+                                class="block text-gray-700 text-sm font-bold mb-2">Contact Person:</label>
                             <input type="text"
                                 class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                                id="descriptionFormInput" placeholder="Ex. Obat batuk berdahak" wire:model="description">
-                            @error('description') <span class="text-red-500">{{ $message }}</span>@enderror
+                                id="cpFormInput" placeholder="Exp. John Doe" wire:model="cp">
+                            @error('cp') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>
+                        <div class="mb-4">
+                            <label for="phoneFormInput"
+                                class="block text-gray-700 text-sm font-bold mb-2">Number Phone:</label>
+                            <input type="text"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="phoneFormInput" placeholder="Exp. 081234567891" wire:model="phone">
+                            @error('phone') <span class="text-red-500">{{ $message }}</span>@enderror
+                        </div>  
+                        <div class="mb-4">
+                            <label for="addressFormInput"
+                                class="block text-gray-700 text-sm font-bold mb-2">Address:</label>
+                            <input type="text"
+                                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                                id="addressFormInput" placeholder="Exp. Jln. Ikan-ikanan" wire:model="address">
+                            @error('address') <span class="text-red-500">{{ $message }}</span>@enderror
                         </div>                        
                     </div>
                 </div>
