@@ -13,7 +13,7 @@
 	            </div>
 	            @endif
 	            <button wire:click="create()"
-	                class="my-4 inline-flex justify-center w-full rounded-md border border-transparent px-4 py-2 bg-red-600 text-base font-bold text-white shadow-sm hover:bg-red-700">
+	                class="bg-transparent mb-4 hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded">
 	                Create Student
 	            </button>
 	            @if($isModalOpen)
@@ -38,9 +38,9 @@
 	                        <td class="border px-4 py-2">{{ $product->mobile}}</td>
 	                        <td class="border px-4 py-2">
 	                            <button wire:click="edit({{ $product->id }})"
-	                                class="flex px-4 py-2 bg-gray-500 text-gray-900 cursor-pointer">Edit</button>
+	                                class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-2 px-4 rounded-full">Edit</button>
 	                            <button wire:click="delete({{ $product->id }})"
-	                                class="flex px-4 py-2 bg-red-100 text-gray-900 cursor-pointer">Delete</button>
+	                                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-full">Delete</button>
 	                        </td>
 	                    </tr>
 	                    @endforeach
